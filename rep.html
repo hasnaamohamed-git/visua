@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Impact on Egyptian Agriculture </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #4a5f7f 0%, #5a7aa5 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(74, 95, 127, 0.4);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 10px;
+            border-left: 5px solid #4a5f7f;
+        }
+
+        .meta-item {
+            padding: 10px;
+        }
+
+        .meta-item strong {
+            color: #4a5f7f;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        section {
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #4a5f7f;
+        }
+
+        h2 {
+            color: #4a5f7f;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #bbdefb;
+        }
+
+        h3 {
+            color: #5a7aa5;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #90caf9;
+        }
+
+        h4 {
+            color: #4a5f7f;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 15px 0;
+            text-align: justify;
+            color: #37474f;
+        }
+
+        .dashboard-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            border-radius: 15px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-placeholder {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border: 3px dashed #4a5f7f;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5a7aa5;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        ul li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            color: #455a64;
+        }
+
+        ul li:before {
+            content: "❄";
+            position: absolute;
+            left: 0;
+            color: #5a7aa5;
+            font-size: 1.2em;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #0288d1;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #7b1fa2;
+        }
+
+        .data-highlight {
+            background: linear-gradient(135deg, #4a5f7f 0%, #5a7aa5 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, #4a5f7f 0%, #5a7aa5 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(74, 95, 127, 0.4);
+        }
+
+        .conclusion h2 {
+            color: white;
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .conclusion p {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .checkmark {
+            color: #76ff03;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Climate Impact on Egyptian Agriculture and Business</h1>
+            <p class="subtitle">A Decade of Weather Changes (2015-2024)</p>
+        </header>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <strong>Program:</strong> Data Science
+            </div>
+            <div class="meta-item">
+                <strong>Course:</strong> Data Visualization
+            </div>
+            <div class="meta-item">
+                <strong>Dataset:</strong> Egypt_Weather_Daily (External)
+            </div>
+            <div class="meta-item">
+                <strong>Date:</strong> November 28, 2025
+            </div>
+        </div>
+
+        <section id="story">
+            <h2>A. Story Explanation</h2>
+            <p>
+                This dashboard tells a comprehensive story about how climate and weather changes in Egypt over the past decade (2015-2024) have fundamentally altered agricultural opportunities, business risks, and urban planning considerations, with Alexandria serving as a detailed case study for coastal adaptation strategies.
+            </p>
+            <p>
+                The narrative unfolds in four connected chapters:
+            </p>
+            <ul>
+                <li><strong>Nile Soil (The Beginning):</strong> Overview of soil fertility variance and moisture across Egyptian governorates, revealing ideal zones for agricultural investment versus unstable areas.</li>
+                <li><strong>Temperature Last Decade (The Middle):</strong> Analysis of temperature trends over the decade, with particular focus on the 2019-2020 drop due to COVID-19 pandemic impact on industrial activity, proving significant human impact on environmental pollution.</li>
+                <li><strong>Rainy Alexandria (Specific Analysis):</strong> Examination of precipitation patterns, focusing on the sharp 2020 increase, especially in coastal governorates like Alexandria (18.20% of total rainfall).</li>
+                <li><strong>Alex Weather Tour (The End):</strong> Detailed Alexandria case study, combining temperature, humidity, soil moisture, and rainfall to provide actionable business and urban planning recommendations.</li>
+            </ul>
+            <p>
+                <strong>Main Message:</strong> Climate change in Egypt is not an abstract concept - it is reshaping where to farm, where to invest, and how coastal cities must prepare for increased risks. Businesses and governments must act now based on this data.
+            </p>
+        </section>
+
+        <section id="overview-page">
+            <h2>Dashboard Page 1: Overview</h2>
+            <div class="dashboard-container">
+                <div class="dashboard-placeholder">
+                    <img src="D:/hasnaa/OneDrive/Pictures/Screenshots 1/Screenshot (648).png" alt="Overview Dashboard - Place overview.png in the same folder">
+                </div>
+            </div>
+            <h3>Purpose</h3>
+            <p>
+                This introductory page sets the context for the entire dashboard. It presents the main story and provides a roadmap for the four analytical pages that follow. The text box explains the objective and structure, ensuring immediate clarity and guiding the viewer through the journey.
+            </p>
+        </section>
+
+        <section id="charts">
+            
+
+            <h3>Page 2: Nile Soil</h3>
+            <div class="dashboard-container">
+                <div class="dashboard-placeholder">
+                    <img src="D:/hasnaa/OneDrive/Pictures/Screenshots 1/Screenshot (646).png" alt="Nile Soil Dashboard - Place nile_soil.png in the same folder">
+                </div>
+            </div>
+
+            <h4>1. Pie Chart - Variance of soil_moisture</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show the relative distribution of soil moisture variance across governorates. Pie charts are effective for proportional comparisons.</p>
+                <p><strong>Insight:</strong> Giza has the highest variance (<span class="data-highlight">21.4%</span>), indicating instability in soil fertility - unsuitable for long-term agriculture. Governorates like Kafr El Sheikh (2.95%) and Dakahlia are more stable.</p>
+                <p><strong>Business Value:</strong> Agricultural investors should target low-variance areas.</p>
+            </div>
+
+            <h4>2. Map Visual - Variance of soil_moisture by Location</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To provide geographical context. Maps make spatial patterns immediately clear.</p>
+                <p><strong>Insight:</strong> The Nile Valley (especially the Delta) shows more stable soil moisture compared to urban areas like Greater Cairo and Giza.</p>
+                <p><strong>Business Value:</strong>  prioritize agriculture in Nile Delta regions.</p>
+            </div>
+
+            <h4>3. Stacked Area Chart - soil_moisture for Kafr El Sheikh by Year</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show the trend over time for an ideal governorate. Area charts highlight cumulative growth or changes.</p>
+                <p><strong>Insight:</strong> Kafr El Sheikh's soil moisture stabilized around 40-50 over the decade, with a high growth in 2017.</p>
+                <p><strong>Business Value:</strong> Kafr El Sheikh is a safe bet for long-term agricultural investments.</p>
+            </div>
+
+            <h4>4. funnel - soil_moisture by governorate (100%)</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> For direct comparison between governorates. Bar charts are excellent for ranking.</p>
+                <p><strong>Insight:</strong> Sharqia (<span class="data-highlight">450.10</span>), Dakahlia (<span class="data-highlight">466.28</span>), and Kafr El Sheikh (<span class="data-highlight">372</span>) lead in soil moisture, confirming their agricultural potential.</p>
+                <p><strong>Business Value:</strong> These governorates are top priorities for agribusiness companies.</p>
+            </div>
+
+            <h4>5. Line Chart - soil_moisture, precipitation and relative_humidity</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show the interplay between three variables over time. Line charts are ideal for multi-variable trends.</p>
+                <p><strong>Insight:</strong> Soil moisture closely tracks precipitation patterns.  rainfall enhances fertility but also poses flood risks.</p>
+                <p><strong>Business Value:</strong> Agricultural companies should invest in drainage infrastructure in high-rainfall areas.</p>
+            </div>
+
+            <h3>Page 3: Temperature Last Decade</h3>
+            <div class="dashboard-container">
+                <div class="dashboard-placeholder">
+                    <img src="D:/hasnaa/OneDrive/Pictures/Screenshots 1/Screenshot (644).png" alt="Temperature Dashboard - Place temperature.png in the same folder">
+                </div>
+            </div>
+
+            <h4>1. Combo Chart - temperature by Year</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To combine columns (annual temperatures) and line (trend), highlighting both absolute values and direction.</p>
+                <p><strong>Insight:</strong> Temperature dropped sharply in 2019 , then rose again in 2020. This dip coincides with COVID-19 lockdowns and decreased industrial activity.</p>
+                <p><strong>Business Value:</strong> Proves significant human impact on pollution; companies should prepare for stricter environmental regulations and shift to green practices.</p>
+            </div>
+
+            <h4>2. Line Chart - temperature & relative_humidity</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show distribution and interplay between temperature and humidity.</p>
+                <p><strong>Insight:</strong>The relationship between temperature and humidity can be either direct or inverse.</p>
+               
+            </div>
+
+            <h4>3. Treemap - temperature by Year in governorate</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show hierarchical patterns and relative size. Treemaps are good for multi-dimensional data exploration.</p>
+                <p><strong>Insight:</strong> Recent years (2024, 2023) dominate, with warm colors  indicating higher temperatures.</p>
+                <p><strong>Business Value:</strong> Continued warming requires heat-resistant crops and improved irrigation systems.</p>
+            </div>
+
+            <h4>4. Area Chart - temperature by governorate</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To compare trends across governorates.</p>
+                <p><strong>Insight:</strong> Coastal governorates (Alexandria) show more stable temperatures  compared to inland areas (Cairo, Giza), which have higher variation.</p>
+                <p><strong>Business Value:</strong> Coastal areas are better suited for heat-sensitive crops.</p>
+            </div>
+
+            <h3>Page 4: Rainy Alexandria</h3>
+            <div class="dashboard-container">
+                <div class="dashboard-placeholder">
+                    <img src="D:/hasnaa/OneDrive/Pictures/Screenshots 1/Screenshot (643).png" alt="Rainy Alexandria Dashboard - Place rainy_alexandria.png in the same folder">
+                </div>
+            </div>
+
+            <h4>1. Pie Chart - Sum of precipitation by governorate</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show relative distribution of rainfall. Effective for quick comparisons.</p>
+                <p><strong>Insight:</strong> Alexandria accounts for <span class="data-highlight">18.20%</span> of total rainfall (in 2020)</p>
+                <p><strong>Business Value:</strong> Coastal area businesses should invest in flood protection; clothing retailers should stock more winter wear in Alexandria.</p>
+            </div>
+
+            <h4>2. Stacked columns Chart - precipitation and temperature by governorate</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To compare two variables (precipitation and temperature) side by side.</p>
+                <p><strong>Insight:</strong> Alexandria has high precipitation (~27%) but moderate temperature (~9%), confirming its unique coastal climate.</p>
+                <p><strong>Business Value:</strong> The combination of high rain and moderate temperature is ideal for protected agriculture (greenhouses).</p>
+            </div>
+
+            <h4>3. Ribbon Chart - Sum of precipitation by Year</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To highlight the sharp spike in 2020.</p>
+                <p><strong>Insight:</strong> Rainfall jumped from in  2020. This anomaly indicates climate instability.</p>
+                <p><strong>Business Value:</strong> Companies should closely monitor weather patterns and adopt flexible risk management strategies.</p>
+            </div>
+
+            <h4>4. Area Chart - precipitation, relative_humidity, surface_pressure by Year</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show multi-variable effects and correlations.</p>
+                <p><strong>Insight:</strong> There is no explicit relationship between rainfall and pressure or humidity.</p>
+            </div>
+
+            <h3>Page 5: Alex Weather Tour</h3>
+            <div class="dashboard-container">
+                <div class="dashboard-placeholder">
+                    <img src="D:/hasnaa/OneDrive/Pictures/Screenshots 1/Screenshot (642).png" alt="Alex Weather Tour Dashboard - Place alex_weather.png in the same folder">
+                </div>
+            </div>
+
+            <h4>1. Bar Chart - temperature by Year</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To clearly show annual temperature trend.</p>
+                <p><strong>Insight:</strong> Alexandria's temperatures are relatively stable (except for 2019 dip), making it suitable for year-round residence and tourism.</p>
+                <p><strong>Business Value:</strong> Real estate developers should market Alexandria as a stable climate location.</p>
+            </div>
+
+            <h4>2. Pie Chart - Sum of relative_humidity by Quarter</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show seasonal variations.</p>
+                <p><strong>Insight:</strong> Quarter 3 (Qtr 3) has the highest humidity (25.7%), while Quarter 2 (Qtr 2) is the lowest (24.31%).</p>
+                <p><strong>Business Value:</strong> Tourism businesses should target Q2 (lower humidity = more comfortable) for promotional marketing.</p>
+            </div>
+
+            <h4>3. Card Visuals - Key Performance Indicators</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To highlight key KPIs and make insights immediately actionable.</p>
+                <p><strong>Insight:</strong> Alexandria's soil moisture increased by 46% (from <span class="data-highlight">17.73</span> to <span class="data-highlight">25.81</span>), indicating potential transformation into agricultural land. Rainfall peaked in 2020 (<span class="data-highlight">260.30 mm</span>).</p>
+                <p><strong>Business Value:</strong> Local government should explore urban agriculture projects in Alexandria.</p>
+            </div>
+
+            <h4>4. Line Chart - Sum of precipitation by Year and Quarter</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show cyclical patterns and anomalies.</p>
+                <p><strong>Insight:</strong> Rainfall peaks every few years, with an extreme spike in 2020.</p>
+                <p><strong>Business Value:</strong> Insurance companies should adjust risk models to account for cyclical extreme rain events.</p>
+            </div>
+
+            <h4>5. Scatter Plot - soil_moisture by Year</h4>
+            <div class="insight-box">
+                <p><strong>Why chosen:</strong> To show trend and dispersion.</p>
+                <p><strong>Insight:</strong> Soil moisture increased steadily from 2015 to 2024, with minimal scatter, indicating consistent improvement.</p>
+                <p><strong>Business Value:</strong> Alexandria is becoming more viable for agriculture - a good time for green investments.</p>
+            </div>
+        </section>
+
+        <section id="insights">
+            <h2>C. Insights & Recommendations</h2>
+
+            <h3>Insight 1: Soil Fertility Variance Creates Opportunities and Risks</h3>
+            <div class="recommendation-box">
+                <p><strong>Data:</strong> Giza has the highest soil moisture variance , while Kafr El Sheikh and Dakahlia have low variance .</p>
+                <p><strong>Recommendations:</strong></p>
+                <ul>
+                    <li><strong>For Agricultural Companies:</strong> Invest in high-stability areas like Kafr El Sheikh  and Dakahlia  for reliable crop production. Avoid Giza for long-term agriculture.</li>
+                    <li><strong>For Real Estate Developers:</strong> Focus on Giza and Greater Cairo for housing, rather than agriculture. However, invest in soil studies to avoid foundation issues.</li>
+                    <li><strong>For Government:</strong> Create national soil fertility maps to guide land allocation (agriculture vs. housing vs. industry).</li>
+                </ul>
+            </div>
+
+            <h3>Insight 2: COVID-19 Proved Significant Human Impact on Climate</h3>
+            <div class="recommendation-box">
+                <p><strong>Data:</strong> Temperatures dropped sharply in 2019-2020 , coinciding with COVID-19 lockdowns and decreased industrial activity.</p>
+                <p><strong>Recommendations:</strong></p>
+                <ul>
+                    <li><strong>For Industrial Companies:</strong> Adopt green technologies now to avoid future stricter regulations. Invest in renewable energy (solar/wind) and energy-efficient operations.</li>
+                    <li><strong>For Government:</strong> Use this data to support environmental policies. Impose carbon taxes or incentives for green practices.</li>
+                    <li><strong>For Investors:</strong> Shift portfolios toward eco-friendly companies - the green market is growing rapidly.</li>
+                </ul>
+            </div>
+
+            <h3>Insight 3: Sharp Rainfall Increase in 2020, Especially Coastal Areas</h3>
+            <div class="recommendation-box">
+                <p><strong>Data:</strong> Rainfall jumped  in 2020, with Alexandria representing 18.20% of total rainfall.</p>
+                <p><strong>Recommendations:</strong></p>
+                <ul>
+                    <li><strong>For Coastal Cities (Alexandria, Marsa Matrouh):</strong> Urgently invest in flood management infrastructure - drainage systems, sea barriers, and green infrastructure (rain gardens).</li>
+                    <li><strong>For Clothing Retailers:</strong> Focus on winter/rain wear in Alexandria, and light summer clothing in inland governorates like Sohag.</li>
+                    <li><strong>For Insurance Companies:</strong> Recalculate risk models. Increase premiums for coastal properties or require flood protection measures.</li>
+                </ul>
+            </div>
+
+            <h3>Insight 4: Alexandria is Transforming - New Agricultural Potential</h3>
+            <div class="recommendation-box">
+                <p><strong>Data:</strong> Alexandria's soil moisture increased from 17.73 (2015) to 25.81 (2024), a 46% rise. Rainfall peaked in 2020 (260.30 mm).</p>
+                <p><strong>Recommendations:</strong></p>
+                <ul>
+                    <li><strong>For Local Government:</strong> Explore urban agriculture initiatives in Alexandria - rooftop gardens, community green spaces, and coastal greenhouses.</li>
+                    <li><strong>For Agricultural Investors:</strong> Start pilot projects in Alexandria, especially for high-value crops (organic vegetables, herbs) that thrive in moderate humid climates.</li>
+                    <li><strong>For Business Owners:</strong> Protect assets against flooding, but also leverage increased fertility for urban agricultural ventures (e.g., farm-to-table restaurants).</li>
+                </ul>
+            
+
+            
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+                This dashboard reveals that climate change in Egypt is not a distant threat - it is happening now, reshaping the economy. The data is clear:
+            </p>
+            <p><span class="checkmark">✓</span> <strong>Agriculture:</strong> Invest in stable governorates like Kafr El Sheikh, avoid Giza.</p>
+            <p><span class="checkmark">✓</span> <strong>Environment:</strong> Transition to green models is urgent - COVID-19 proved human impact.</p>
+            <p><span class="checkmark">✓</span> <strong>Coastal Areas:</strong> Alexandria faces flood risks but also new agricultural opportunities.</p>
+            <p><span class="checkmark">✓</span> <strong>Business:</strong> Diversification, flexibility, and data-driven planning are keys to survival and prosperity.</p>
+            <p style="margin-top: 20px;">
+                Companies and governments that act on these insights now will lead Egypt's future economy. Those who ignore them will face increasing risks and costs.
+            </p>
+        </section>
+
+        </div>
+
+        
+    </div>
+</body>
+</html>
